@@ -1,0 +1,37 @@
+# name	size	ref	mode
+sp_hero_m_child	1536x1024	assets/raw/pt_m_child.png	char
+sp_hero_m_youth	1536x1024		style
+sp_hero_m_general	1536x1024	assets/raw/pt_m_hero.png	char
+sp_hero_f_child	1536x1024	assets/raw/pt_f_child.png	char
+sp_hero_f_scholar	1536x1024	assets/raw/pt_f_scholar.png	char
+sp_hero_f_general	1536x1024	assets/raw/pt_f_general.png	char
+sp_hero_f_lady	1536x1024	assets/raw/pt_f_lady.png	char
+sp_hero_f_sage	1536x1024	assets/raw/pt_f_sage.png	char
+sp_father	1536x1024	assets/raw/pt_father.png	char
+sp_mother	1536x1024	assets/raw/pt_mother.png	char
+sp_villain	1536x1024	assets/raw/pt_villain.png	char
+sp_emperor	1536x1024	assets/raw/pt_emperor.png	char
+sp_rescuer	1536x1024	assets/raw/pt_rescuer.png	char
+sp_master	1536x1024	assets/raw/pt_master.png	char
+sp_yunseon	1536x1024	assets/raw/pt_yunseon.png	char
+sp_yunsojeo	1536x1024	assets/raw/pt_yunsojeo.png	char
+sp_enemy_general	1536x1024	assets/raw/pt_enemy.png	char
+sp_listener	1536x1024		style
+sp_narrator	1536x1024	assets/raw/pt_narrator.png	char
+sp_joseon_man	1536x1024		style
+sp_joseon_woman	1536x1024		style
+sp_courtier	1536x1024		style
+sp_court_lady	1536x1024		style
+sp_villager_m	1536x1024		style
+sp_villager_w	1536x1024		style
+sp_monk	1536x1024		style
+sp_soldier	1536x1024		style
+sp_physician	1536x1024		style
+sp_servant	1536x1024		style
+sp_boss	1536x1024	assets/raw/pt_enemy.png	char
+sp_assassin	1536x1024		style
+sp_barbarian	1536x1024		style
+sp_phantom	1536x1024		style
+props_buildings	1536x1024		style
+props_nature	1536x1024		style
+props_objects	1536x1024		style

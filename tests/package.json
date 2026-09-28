@@ -1,0 +1,1 @@
+﻿{ "name": "hero-road-tests", "private": true, "type": "module", "scripts": { "content": "node content.mjs", "e2e": "node e2e.mjs m && node e2e.mjs fa && node e2e.mjs fb && node e2e.mjs fc", "audio": "node audio.mjs" }, "devDependencies": { "playwright": "^1.63.0" } }

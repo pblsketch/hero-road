@@ -1,0 +1,1416 @@
+{
+ "pr_house": {
+  "img": "assets/sprites/pr_house.png",
+  "w": 192,
+  "h": 109,
+  "foot": [
+   4,
+   38,
+   188,
+   106
+  ]
+ },
+ "pr_cottage": {
+  "img": "assets/sprites/pr_cottage.png",
+  "w": 128,
+  "h": 93,
+  "foot": [
+   4,
+   28,
+   124,
+   90
+  ]
+ },
+ "pr_palace": {
+  "img": "assets/sprites/pr_palace.png",
+  "w": 288,
+  "h": 166,
+  "foot": [
+   6,
+   50,
+   282,
+   161
+  ]
+ },
+ "pr_temple": {
+  "img": "assets/sprites/pr_temple.png",
+  "w": 192,
+  "h": 113,
+  "foot": [
+   4,
+   40,
+   188,
+   110
+  ]
+ },
+ "pr_shrine": {
+  "img": "assets/sprites/pr_shrine.png",
+  "w": 96,
+  "h": 96,
+  "foot": [
+   2,
+   34,
+   94,
+   93
+  ]
+ },
+ "pr_gate": {
+  "img": "assets/sprites/pr_gate.png",
+  "w": 128,
+  "h": 84,
+  "foot": [
+   0,
+   29,
+   128,
+   81
+  ]
+ },
+ "sp_hero_m_child": {
+  "img": "assets/sprites/sp_hero_m_child.png",
+  "fw": 64,
+  "fh": 64,
+  "px": 32,
+  "py": 62,
+  "cols": 8,
+  "anims": {
+   "walk_down": {
+    "start": 0,
+    "n": 4,
+    "fps": 8
+   },
+   "walk_left": {
+    "start": 4,
+    "n": 4,
+    "fps": 8
+   },
+   "walk_up": {
+    "start": 8,
+    "n": 4,
+    "fps": 8
+   }
+  }
+ },
+ "sp_hero_m_general": {
+  "img": "assets/sprites/sp_hero_m_general.png",
+  "fw": 96,
+  "fh": 80,
+  "px": 48,
+  "py": 78,
+  "cols": 8,
+  "anims": {
+   "walk_down": {
+    "start": 0,
+    "n": 4,
+    "fps": 8
+   },
+   "walk_left": {
+    "start": 4,
+    "n": 4,
+    "fps": 8
+   },
+   "walk_up": {
+    "start": 8,
+    "n": 4,
+    "fps": 8
+   },
+   "atk_down": {
+    "start": 12,
+    "n": 3,
+    "fps": 16
+   },
+   "atk_left": {
+    "start": 15,
+    "n": 3,
+    "fps": 16
+   },
+   "atk_up": {
+    "start": 18,
+    "n": 3,
+    "fps": 16
+   }
+  }
+ },
+ "pr_pine": {
+  "img": "assets/sprites/pr_pine.png",
+  "w": 96,
+  "h": 145,
+  "foot": [
+   38,
+   116,
+   58,
+   145
+  ]
+ },
+ "pr_willow": {
+  "img": "assets/sprites/pr_willow.png",
+  "w": 96,
+  "h": 122,
+  "foot": [
+   38,
+   98,
+   58,
+   122
+  ]
+ },
+ "pr_plum": {
+  "img": "assets/sprites/pr_plum.png",
+  "w": 96,
+  "h": 111,
+  "foot": [
+   38,
+   89,
+   58,
+   111
+  ]
+ },
+ "pr_bamboo": {
+  "img": "assets/sprites/pr_bamboo.png",
+  "w": 64,
+  "h": 94,
+  "foot": [
+   10,
+   66,
+   54,
+   94
+  ]
+ },
+ "pr_bush": {
+  "img": "assets/sprites/pr_bush.png",
+  "w": 48,
+  "h": 45,
+  "foot": [
+   5,
+   18,
+   43,
+   45
+  ]
+ },
+ "pr_boulder": {
+  "img": "assets/sprites/pr_boulder.png",
+  "w": 64,
+  "h": 59,
+  "foot": [
+   3,
+   21,
+   61,
+   59
+  ]
+ },
+ "pr_rocks": {
+  "img": "assets/sprites/pr_rocks.png",
+  "w": 48,
+  "h": 36,
+  "foot": [
+   2,
+   11,
+   46,
+   36
+  ]
+ },
+ "pr_reeds": {
+  "img": "assets/sprites/pr_reeds.png",
+  "w": 48,
+  "h": 53,
+  "foot": [
+   0,
+   0,
+   0,
+   0
+  ]
+ },
+ "pr_flowers": {
+  "img": "assets/sprites/pr_flowers.png",
+  "w": 48,
+  "h": 34,
+  "foot": [
+   0,
+   0,
+   0,
+   0
+  ]
+ },
+ "pr_stump": {
+  "img": "assets/sprites/pr_stump.png",
+  "w": 32,
+  "h": 22,
+  "foot": [
+   3,
+   7,
+   29,
+   22
+  ]
+ },
+ "pr_lotus": {
+  "img": "assets/sprites/pr_lotus.png",
+  "w": 64,
+  "h": 51,
+  "foot": [
+   0,
+   0,
+   0,
+   0
+  ]
+ },
+ "pr_maple": {
+  "img": "assets/sprites/pr_maple.png",
+  "w": 96,
+  "h": 104,
+  "foot": [
+   38,
+   83,
+   58,
+   104
+  ]
+ },
+ "pr_well": {
+  "img": "assets/sprites/pr_well.png",
+  "w": 64,
+  "h": 80,
+  "foot": [
+   3,
+   36,
+   61,
+   80
+  ]
+ },
+ "pr_target": {
+  "img": "assets/sprites/pr_target.png",
+  "w": 48,
+  "h": 67,
+  "foot": [
+   10,
+   40,
+   38,
+   67
+  ]
+ },
+ "pr_dummy": {
+  "img": "assets/sprites/pr_dummy.png",
+  "w": 32,
+  "h": 47,
+  "foot": [
+   6,
+   33,
+   26,
+   47
+  ]
+ },
+ "pr_altar": {
+  "img": "assets/sprites/pr_altar.png",
+  "w": 64,
+  "h": 60,
+  "foot": [
+   3,
+   24,
+   61,
+   60
+  ]
+ },
+ "pr_tent": {
+  "img": "assets/sprites/pr_tent.png",
+  "w": 128,
+  "h": 113,
+  "foot": [
+   6,
+   45,
+   122,
+   113
+  ]
+ },
+ "pr_bookshelf": {
+  "img": "assets/sprites/pr_bookshelf.png",
+  "w": 64,
+  "h": 91,
+  "foot": [
+   0,
+   46,
+   64,
+   91
+  ]
+ },
+ "pr_table": {
+  "img": "assets/sprites/pr_table.png",
+  "w": 64,
+  "h": 46,
+  "foot": [
+   0,
+   18,
+   64,
+   46
+  ]
+ },
+ "pr_jars": {
+  "img": "assets/sprites/pr_jars.png",
+  "w": 64,
+  "h": 58,
+  "foot": [
+   3,
+   23,
+   61,
+   58
+  ]
+ },
+ "pr_cart": {
+  "img": "assets/sprites/pr_cart.png",
+  "w": 80,
+  "h": 55,
+  "foot": [
+   4,
+   22,
+   76,
+   55
+  ]
+ },
+ "pr_banner": {
+  "img": "assets/sprites/pr_banner.png",
+  "w": 32,
+  "h": 57,
+  "foot": [
+   10,
+   48,
+   22,
+   57
+  ]
+ },
+ "pr_bonfire": {
+  "img": "assets/sprites/pr_bonfire.png",
+  "w": 48,
+  "h": 60,
+  "foot": [
+   7,
+   30,
+   41,
+   60
+  ]
+ },
+ "pr_lantern": {
+  "img": "assets/sprites/pr_lantern.png",
+  "w": 32,
+  "h": 65,
+  "foot": [
+   5,
+   39,
+   27,
+   65
+  ]
+ },
+ "pr_stall": {
+  "img": "assets/sprites/pr_stall.png",
+  "w": 96,
+  "h": 80,
+  "foot": [
+   2,
+   36,
+   94,
+   80
+  ]
+ },
+ "pr_boat": {
+  "img": "assets/sprites/pr_boat.png",
+  "w": 96,
+  "h": 52,
+  "foot": [
+   5,
+   16,
+   91,
+   52
+  ]
+ },
+ "pr_chest": {
+  "img": "assets/sprites/pr_chest.png",
+  "w": 48,
+  "h": 38,
+  "foot": [
+   2,
+   15,
+   46,
+   38
+  ]
+ },
+ "pr_drum": {
+  "img": "assets/sprites/pr_drum.png",
+  "w": 48,
+  "h": 56,
+  "foot": [
+   5,
+   28,
+   43,
+   56
+  ]
+ },
+ "sp_assassin": {
+  "img": "assets/sprites/sp_assassin.png",
+  "fw": 96,
+  "fh": 80,
+  "px": 48,
+  "py": 78,
+  "cols": 8,
+  "anims": {
+   "walk_down": {
+    "start": 0,
+    "n": 4,
+    "fps": 8
+   },
+   "walk_left": {
+    "start": 4,
+    "n": 4,
+    "fps": 8
+   },
+   "walk_up": {
+    "start": 8,
+    "n": 4,
+    "fps": 8
+   },
+   "atk_down": {
+    "start": 12,
+    "n": 3,
+    "fps": 16
+   },
+   "atk_left": {
+    "start": 15,
+    "n": 3,
+    "fps": 16
+   },
+   "atk_up": {
+    "start": 18,
+    "n": 3,
+    "fps": 16
+   }
+  }
+ },
+ "sp_barbarian": {
+  "img": "assets/sprites/sp_barbarian.png",
+  "fw": 96,
+  "fh": 80,
+  "px": 48,
+  "py": 78,
+  "cols": 8,
+  "anims": {
+   "walk_down": {
+    "start": 0,
+    "n": 4,
+    "fps": 8
+   },
+   "walk_left": {
+    "start": 4,
+    "n": 4,
+    "fps": 8
+   },
+   "walk_up": {
+    "start": 8,
+    "n": 4,
+    "fps": 8
+   },
+   "atk_down": {
+    "start": 12,
+    "n": 3,
+    "fps": 16
+   },
+   "atk_left": {
+    "start": 15,
+    "n": 3,
+    "fps": 16
+   },
+   "atk_up": {
+    "start": 18,
+    "n": 3,
+    "fps": 16
+   }
+  }
+ },
+ "sp_court_lady": {
+  "img": "assets/sprites/sp_court_lady.png",
+  "fw": 64,
+  "fh": 64,
+  "px": 32,
+  "py": 62,
+  "cols": 8,
+  "anims": {
+   "walk_down": {
+    "start": 0,
+    "n": 4,
+    "fps": 8
+   },
+   "walk_left": {
+    "start": 4,
+    "n": 4,
+    "fps": 8
+   },
+   "walk_up": {
+    "start": 8,
+    "n": 4,
+    "fps": 8
+   }
+  }
+ },
+ "sp_courtier": {
+  "img": "assets/sprites/sp_courtier.png",
+  "fw": 64,
+  "fh": 64,
+  "px": 32,
+  "py": 62,
+  "cols": 8,
+  "anims": {
+   "walk_down": {
+    "start": 0,
+    "n": 4,
+    "fps": 8
+   },
+   "walk_left": {
+    "start": 4,
+    "n": 4,
+    "fps": 8
+   },
+   "walk_up": {
+    "start": 8,
+    "n": 4,
+    "fps": 8
+   }
+  }
+ },
+ "sp_emperor": {
+  "img": "assets/sprites/sp_emperor.png",
+  "fw": 64,
+  "fh": 64,
+  "px": 32,
+  "py": 62,
+  "cols": 8,
+  "anims": {
+   "walk_down": {
+    "start": 0,
+    "n": 4,
+    "fps": 8
+   },
+   "walk_left": {
+    "start": 4,
+    "n": 4,
+    "fps": 8
+   },
+   "walk_up": {
+    "start": 8,
+    "n": 4,
+    "fps": 8
+   }
+  }
+ },
+ "sp_enemy_general": {
+  "img": "assets/sprites/sp_enemy_general.png",
+  "fw": 64,
+  "fh": 64,
+  "px": 32,
+  "py": 62,
+  "cols": 8,
+  "anims": {
+   "walk_down": {
+    "start": 0,
+    "n": 4,
+    "fps": 8
+   },
+   "walk_left": {
+    "start": 4,
+    "n": 4,
+    "fps": 8
+   },
+   "walk_up": {
+    "start": 8,
+    "n": 4,
+    "fps": 8
+   }
+  }
+ },
+ "sp_father": {
+  "img": "assets/sprites/sp_father.png",
+  "fw": 64,
+  "fh": 64,
+  "px": 32,
+  "py": 62,
+  "cols": 8,
+  "anims": {
+   "walk_down": {
+    "start": 0,
+    "n": 4,
+    "fps": 8
+   },
+   "walk_left": {
+    "start": 4,
+    "n": 4,
+    "fps": 8
+   },
+   "walk_up": {
+    "start": 8,
+    "n": 4,
+    "fps": 8
+   }
+  }
+ },
+ "sp_hero_f_child": {
+  "img": "assets/sprites/sp_hero_f_child.png",
+  "fw": 64,
+  "fh": 64,
+  "px": 32,
+  "py": 62,
+  "cols": 8,
+  "anims": {
+   "walk_down": {
+    "start": 0,
+    "n": 4,
+    "fps": 8
+   },
+   "walk_left": {
+    "start": 4,
+    "n": 4,
+    "fps": 8
+   },
+   "walk_up": {
+    "start": 8,
+    "n": 4,
+    "fps": 8
+   }
+  }
+ },
+ "sp_hero_f_general": {
+  "img": "assets/sprites/sp_hero_f_general.png",
+  "fw": 96,
+  "fh": 80,
+  "px": 48,
+  "py": 78,
+  "cols": 8,
+  "anims": {
+   "walk_down": {
+    "start": 0,
+    "n": 4,
+    "fps": 8
+   },
+   "walk_left": {
+    "start": 4,
+    "n": 4,
+    "fps": 8
+   },
+   "walk_up": {
+    "start": 8,
+    "n": 4,
+    "fps": 8
+   },
+   "atk_down": {
+    "start": 12,
+    "n": 3,
+    "fps": 16
+   },
+   "atk_left": {
+    "start": 15,
+    "n": 3,
+    "fps": 16
+   },
+   "atk_up": {
+    "start": 18,
+    "n": 3,
+    "fps": 16
+   }
+  }
+ },
+ "sp_hero_f_lady": {
+  "img": "assets/sprites/sp_hero_f_lady.png",
+  "fw": 64,
+  "fh": 64,
+  "px": 32,
+  "py": 62,
+  "cols": 8,
+  "anims": {
+   "walk_down": {
+    "start": 0,
+    "n": 4,
+    "fps": 8
+   },
+   "walk_left": {
+    "start": 4,
+    "n": 4,
+    "fps": 8
+   },
+   "walk_up": {
+    "start": 8,
+    "n": 4,
+    "fps": 8
+   }
+  }
+ },
+ "sp_hero_f_sage": {
+  "img": "assets/sprites/sp_hero_f_sage.png",
+  "fw": 96,
+  "fh": 80,
+  "px": 48,
+  "py": 78,
+  "cols": 8,
+  "anims": {
+   "walk_down": {
+    "start": 0,
+    "n": 4,
+    "fps": 8
+   },
+   "walk_left": {
+    "start": 4,
+    "n": 4,
+    "fps": 8
+   },
+   "walk_up": {
+    "start": 8,
+    "n": 4,
+    "fps": 8
+   },
+   "atk_down": {
+    "start": 12,
+    "n": 3,
+    "fps": 16
+   },
+   "atk_left": {
+    "start": 15,
+    "n": 3,
+    "fps": 16
+   },
+   "atk_up": {
+    "start": 18,
+    "n": 3,
+    "fps": 16
+   }
+  }
+ },
+ "sp_hero_f_scholar": {
+  "img": "assets/sprites/sp_hero_f_scholar.png",
+  "fw": 96,
+  "fh": 80,
+  "px": 48,
+  "py": 78,
+  "cols": 8,
+  "anims": {
+   "walk_down": {
+    "start": 0,
+    "n": 4,
+    "fps": 8
+   },
+   "walk_left": {
+    "start": 4,
+    "n": 4,
+    "fps": 8
+   },
+   "walk_up": {
+    "start": 8,
+    "n": 4,
+    "fps": 8
+   },
+   "atk_down": {
+    "start": 12,
+    "n": 3,
+    "fps": 16
+   },
+   "atk_left": {
+    "start": 15,
+    "n": 3,
+    "fps": 16
+   },
+   "atk_up": {
+    "start": 18,
+    "n": 3,
+    "fps": 16
+   }
+  }
+ },
+ "sp_hero_m_youth": {
+  "img": "assets/sprites/sp_hero_m_youth.png",
+  "fw": 96,
+  "fh": 80,
+  "px": 48,
+  "py": 78,
+  "cols": 8,
+  "anims": {
+   "walk_down": {
+    "start": 0,
+    "n": 4,
+    "fps": 8
+   },
+   "walk_left": {
+    "start": 4,
+    "n": 4,
+    "fps": 8
+   },
+   "walk_up": {
+    "start": 8,
+    "n": 4,
+    "fps": 8
+   },
+   "atk_down": {
+    "start": 12,
+    "n": 3,
+    "fps": 16
+   },
+   "atk_left": {
+    "start": 15,
+    "n": 3,
+    "fps": 16
+   },
+   "atk_up": {
+    "start": 18,
+    "n": 3,
+    "fps": 16
+   }
+  }
+ },
+ "sp_joseon_man": {
+  "img": "assets/sprites/sp_joseon_man.png",
+  "fw": 64,
+  "fh": 64,
+  "px": 32,
+  "py": 62,
+  "cols": 8,
+  "anims": {
+   "walk_down": {
+    "start": 0,
+    "n": 4,
+    "fps": 8
+   },
+   "walk_left": {
+    "start": 4,
+    "n": 4,
+    "fps": 8
+   },
+   "walk_up": {
+    "start": 8,
+    "n": 4,
+    "fps": 8
+   }
+  }
+ },
+ "sp_joseon_woman": {
+  "img": "assets/sprites/sp_joseon_woman.png",
+  "fw": 64,
+  "fh": 64,
+  "px": 32,
+  "py": 62,
+  "cols": 8,
+  "anims": {
+   "walk_down": {
+    "start": 0,
+    "n": 4,
+    "fps": 8
+   },
+   "walk_left": {
+    "start": 4,
+    "n": 4,
+    "fps": 8
+   },
+   "walk_up": {
+    "start": 8,
+    "n": 4,
+    "fps": 8
+   }
+  }
+ },
+ "sp_listener": {
+  "img": "assets/sprites/sp_listener.png",
+  "fw": 64,
+  "fh": 64,
+  "px": 32,
+  "py": 62,
+  "cols": 8,
+  "anims": {
+   "walk_down": {
+    "start": 0,
+    "n": 4,
+    "fps": 8
+   },
+   "walk_left": {
+    "start": 4,
+    "n": 4,
+    "fps": 8
+   },
+   "walk_up": {
+    "start": 8,
+    "n": 4,
+    "fps": 8
+   }
+  }
+ },
+ "sp_master": {
+  "img": "assets/sprites/sp_master.png",
+  "fw": 64,
+  "fh": 64,
+  "px": 32,
+  "py": 62,
+  "cols": 8,
+  "anims": {
+   "walk_down": {
+    "start": 0,
+    "n": 4,
+    "fps": 8
+   },
+   "walk_left": {
+    "start": 4,
+    "n": 4,
+    "fps": 8
+   },
+   "walk_up": {
+    "start": 8,
+    "n": 4,
+    "fps": 8
+   }
+  }
+ },
+ "sp_monk": {
+  "img": "assets/sprites/sp_monk.png",
+  "fw": 64,
+  "fh": 64,
+  "px": 32,
+  "py": 62,
+  "cols": 8,
+  "anims": {
+   "walk_down": {
+    "start": 0,
+    "n": 4,
+    "fps": 8
+   },
+   "walk_left": {
+    "start": 4,
+    "n": 4,
+    "fps": 8
+   },
+   "walk_up": {
+    "start": 8,
+    "n": 4,
+    "fps": 8
+   }
+  }
+ },
+ "sp_mother": {
+  "img": "assets/sprites/sp_mother.png",
+  "fw": 64,
+  "fh": 64,
+  "px": 32,
+  "py": 62,
+  "cols": 8,
+  "anims": {
+   "walk_down": {
+    "start": 0,
+    "n": 4,
+    "fps": 8
+   },
+   "walk_left": {
+    "start": 4,
+    "n": 4,
+    "fps": 8
+   },
+   "walk_up": {
+    "start": 8,
+    "n": 4,
+    "fps": 8
+   }
+  }
+ },
+ "sp_narrator": {
+  "img": "assets/sprites/sp_narrator.png",
+  "fw": 64,
+  "fh": 64,
+  "px": 32,
+  "py": 62,
+  "cols": 8,
+  "anims": {
+   "walk_down": {
+    "start": 0,
+    "n": 4,
+    "fps": 8
+   },
+   "walk_left": {
+    "start": 4,
+    "n": 4,
+    "fps": 8
+   },
+   "walk_up": {
+    "start": 8,
+    "n": 4,
+    "fps": 8
+   }
+  }
+ },
+ "sp_phantom": {
+  "img": "assets/sprites/sp_phantom.png",
+  "fw": 96,
+  "fh": 80,
+  "px": 48,
+  "py": 78,
+  "cols": 8,
+  "anims": {
+   "walk_down": {
+    "start": 0,
+    "n": 4,
+    "fps": 8
+   },
+   "walk_left": {
+    "start": 4,
+    "n": 4,
+    "fps": 8
+   },
+   "walk_up": {
+    "start": 8,
+    "n": 4,
+    "fps": 8
+   },
+   "atk_down": {
+    "start": 12,
+    "n": 3,
+    "fps": 16
+   },
+   "atk_left": {
+    "start": 15,
+    "n": 3,
+    "fps": 16
+   },
+   "atk_up": {
+    "start": 18,
+    "n": 3,
+    "fps": 16
+   }
+  }
+ },
+ "sp_physician": {
+  "img": "assets/sprites/sp_physician.png",
+  "fw": 64,
+  "fh": 64,
+  "px": 32,
+  "py": 62,
+  "cols": 8,
+  "anims": {
+   "walk_down": {
+    "start": 0,
+    "n": 4,
+    "fps": 8
+   },
+   "walk_left": {
+    "start": 4,
+    "n": 4,
+    "fps": 8
+   },
+   "walk_up": {
+    "start": 8,
+    "n": 4,
+    "fps": 8
+   }
+  }
+ },
+ "sp_rescuer": {
+  "img": "assets/sprites/sp_rescuer.png",
+  "fw": 64,
+  "fh": 64,
+  "px": 32,
+  "py": 62,
+  "cols": 8,
+  "anims": {
+   "walk_down": {
+    "start": 0,
+    "n": 4,
+    "fps": 8
+   },
+   "walk_left": {
+    "start": 4,
+    "n": 4,
+    "fps": 8
+   },
+   "walk_up": {
+    "start": 8,
+    "n": 4,
+    "fps": 8
+   }
+  }
+ },
+ "sp_servant": {
+  "img": "assets/sprites/sp_servant.png",
+  "fw": 64,
+  "fh": 64,
+  "px": 32,
+  "py": 62,
+  "cols": 8,
+  "anims": {
+   "walk_down": {
+    "start": 0,
+    "n": 4,
+    "fps": 8
+   },
+   "walk_left": {
+    "start": 4,
+    "n": 4,
+    "fps": 8
+   },
+   "walk_up": {
+    "start": 8,
+    "n": 4,
+    "fps": 8
+   }
+  }
+ },
+ "sp_soldier": {
+  "img": "assets/sprites/sp_soldier.png",
+  "fw": 64,
+  "fh": 64,
+  "px": 32,
+  "py": 62,
+  "cols": 8,
+  "anims": {
+   "walk_down": {
+    "start": 0,
+    "n": 4,
+    "fps": 8
+   },
+   "walk_left": {
+    "start": 4,
+    "n": 4,
+    "fps": 8
+   },
+   "walk_up": {
+    "start": 8,
+    "n": 4,
+    "fps": 8
+   }
+  }
+ },
+ "sp_villager_m": {
+  "img": "assets/sprites/sp_villager_m.png",
+  "fw": 64,
+  "fh": 64,
+  "px": 32,
+  "py": 62,
+  "cols": 8,
+  "anims": {
+   "walk_down": {
+    "start": 0,
+    "n": 4,
+    "fps": 8
+   },
+   "walk_left": {
+    "start": 4,
+    "n": 4,
+    "fps": 8
+   },
+   "walk_up": {
+    "start": 8,
+    "n": 4,
+    "fps": 8
+   }
+  }
+ },
+ "sp_villager_w": {
+  "img": "assets/sprites/sp_villager_w.png",
+  "fw": 64,
+  "fh": 64,
+  "px": 32,
+  "py": 62,
+  "cols": 8,
+  "anims": {
+   "walk_down": {
+    "start": 0,
+    "n": 4,
+    "fps": 8
+   },
+   "walk_left": {
+    "start": 4,
+    "n": 4,
+    "fps": 8
+   },
+   "walk_up": {
+    "start": 8,
+    "n": 4,
+    "fps": 8
+   }
+  }
+ },
+ "sp_villain": {
+  "img": "assets/sprites/sp_villain.png",
+  "fw": 64,
+  "fh": 64,
+  "px": 32,
+  "py": 62,
+  "cols": 8,
+  "anims": {
+   "walk_down": {
+    "start": 0,
+    "n": 4,
+    "fps": 8
+   },
+   "walk_left": {
+    "start": 4,
+    "n": 4,
+    "fps": 8
+   },
+   "walk_up": {
+    "start": 8,
+    "n": 4,
+    "fps": 8
+   }
+  }
+ },
+ "sp_yunseon": {
+  "img": "assets/sprites/sp_yunseon.png",
+  "fw": 64,
+  "fh": 64,
+  "px": 32,
+  "py": 62,
+  "cols": 8,
+  "anims": {
+   "walk_down": {
+    "start": 0,
+    "n": 4,
+    "fps": 8
+   },
+   "walk_left": {
+    "start": 4,
+    "n": 4,
+    "fps": 8
+   },
+   "walk_up": {
+    "start": 8,
+    "n": 4,
+    "fps": 8
+   }
+  }
+ },
+ "sp_yunsojeo": {
+  "img": "assets/sprites/sp_yunsojeo.png",
+  "fw": 64,
+  "fh": 64,
+  "px": 32,
+  "py": 62,
+  "cols": 8,
+  "anims": {
+   "walk_down": {
+    "start": 0,
+    "n": 4,
+    "fps": 8
+   },
+   "walk_left": {
+    "start": 4,
+    "n": 4,
+    "fps": 8
+   },
+   "walk_up": {
+    "start": 8,
+    "n": 4,
+    "fps": 8
+   }
+  }
+ },
+ "sp_barbarian_boss": {
+  "img": "assets/sprites/sp_barbarian_boss.png",
+  "fw": 192,
+  "fh": 120,
+  "px": 96,
+  "py": 118,
+  "cols": 8,
+  "anims": {
+   "walk_down": {
+    "start": 0,
+    "n": 4,
+    "fps": 8
+   },
+   "walk_left": {
+    "start": 4,
+    "n": 4,
+    "fps": 8
+   },
+   "walk_up": {
+    "start": 8,
+    "n": 4,
+    "fps": 8
+   },
+   "atk_down": {
+    "start": 12,
+    "n": 3,
+    "fps": 16
+   },
+   "atk_left": {
+    "start": 15,
+    "n": 3,
+    "fps": 16
+   },
+   "atk_up": {
+    "start": 18,
+    "n": 3,
+    "fps": 16
+   }
+  }
+ },
+ "sp_boss": {
+  "img": "assets/sprites/sp_boss.png",
+  "fw": 192,
+  "fh": 120,
+  "px": 96,
+  "py": 118,
+  "cols": 8,
+  "anims": {
+   "walk_down": {
+    "start": 0,
+    "n": 4,
+    "fps": 8
+   },
+   "walk_left": {
+    "start": 4,
+    "n": 4,
+    "fps": 8
+   },
+   "walk_up": {
+    "start": 8,
+    "n": 4,
+    "fps": 8
+   },
+   "atk_down": {
+    "start": 12,
+    "n": 3,
+    "fps": 16
+   },
+   "atk_left": {
+    "start": 15,
+    "n": 3,
+    "fps": 16
+   },
+   "atk_up": {
+    "start": 18,
+    "n": 3,
+    "fps": 16
+   }
+  }
+ },
+ "sp_phantom_boss": {
+  "img": "assets/sprites/sp_phantom_boss.png",
+  "fw": 192,
+  "fh": 120,
+  "px": 96,
+  "py": 118,
+  "cols": 8,
+  "anims": {
+   "walk_down": {
+    "start": 0,
+    "n": 4,
+    "fps": 8
+   },
+   "walk_left": {
+    "start": 4,
+    "n": 4,
+    "fps": 8
+   },
+   "walk_up": {
+    "start": 8,
+    "n": 4,
+    "fps": 8
+   },
+   "atk_down": {
+    "start": 12,
+    "n": 3,
+    "fps": 16
+   },
+   "atk_left": {
+    "start": 15,
+    "n": 3,
+    "fps": 16
+   },
+   "atk_up": {
+    "start": 18,
+    "n": 3,
+    "fps": 16
+   }
+  }
+ }
+}

@@ -1,0 +1,8 @@
+# 로컬 전용
+tests/node_modules/
+tests/shots/
+.claude/
+__pycache__/
+*.log
+# 생성용 원본 이미지(용량이 커서 저장소에는 올리지 않음 — 게임은 assets/pt, sc, ui, sprites의 가공본을 씀)
+assets/raw/
