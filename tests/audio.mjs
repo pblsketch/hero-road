@@ -16,7 +16,8 @@ const bad = (m) => { problems.push(m); console.log('  ✗ ' + m); };
 const browser = await chromium.launch({ channel: 'chrome', headless: true, args: ['--autoplay-policy=no-user-gesture-required'] });
 const page = await (await browser.newContext({ viewport: { width: 390, height: 844 } })).newPage();
 const warns = [];
-page.on('console', (m) => { if (m.type() === 'error' || (m.type() === 'warning' && m.text().includes('악보'))) warns.push(m.type() + ': ' + m.text()); });
+let expect404 = false; // 없는 파일 시험 중에는 404가 나는 게 맞다
+page.on('console', (m) => { if (expect404 && m.text().includes('404')) return; if (m.type() === 'error' || (m.type() === 'warning' && m.text().includes('악보'))) warns.push(m.type() + ': ' + m.text()); });
 page.on('pageerror', (e) => warns.push('pageerror: ' + e.message));
 
 await page.goto(BASE);
@@ -34,6 +35,20 @@ console.log('곡:', names.tracks.join(', '));
 for (const u of names.used) if (!names.tracks.includes(u)) bad('없는 곡 이름: ' + u);
 for (const c of names.chNoMusic) bad('곡이 없는 장: ' + c);
 for (const t of names.tracks) if (!names.used.includes(t) && !['market', 'battle', 'final', 'tension', 'victory'].includes(t)) bad('쓰지 않는 곡: ' + t);
+
+// 1-2) 배경음 파일: bgm.js의 곡이 모두 TRACKS에 있고 파일이 실제로 있는지
+const files = await page.evaluate(async () => {
+  const out = [];
+  for (const [name, t] of Object.entries(window.BGM ? BGM.tracks : {})) {
+    const r = await fetch(t.src, { method: 'HEAD' }).catch(() => null);
+    out.push({ name, ok: !!(r && r.ok), inSynth: !!G.audio.TRACKS[name] });
+  }
+  return out;
+});
+console.log('배경음 파일:', files.map((f) => f.name).join(', '));
+if (!files.length) bad('배경음 파일 목록(BGM)이 없음');
+for (const f of files) { if (!f.ok) bad('배경음 파일이 없음: ' + f.name); if (!f.inSynth) bad('합성음 대신할 곡이 없음: ' + f.name); }
+for (const t of names.tracks) if (!files.find((f) => f.name === t)) bad('파일이 없는 곡: ' + t);
 
 // 2) 곡마다 오프라인 렌더 → 음량(RMS)·최고치·마디 길이
 const report = await page.evaluate(async (preview) => {
@@ -98,6 +113,14 @@ let s = await now();
 console.log('\n타이틀:', JSON.stringify(s));
 if (s.playing !== 'market') bad('타이틀에서 이야기판 곡이 나오지 않음: ' + JSON.stringify(s));
 if (s.state !== 'running') bad('소리 장치가 켜지지 않음: ' + s.state);
+// 파일 배경음이 실제로 흐르는지(시간이 가는지)
+const f1 = await page.evaluate(() => G.audio.nowFile());
+await page.waitForTimeout(1200);
+const f2 = await page.evaluate(() => G.audio.nowFile());
+console.log('파일 재생:', JSON.stringify(f2));
+if (!f2 || !/market\.mp3$/.test(f2.src)) bad('타이틀에서 이야기판 파일이 나오지 않음: ' + JSON.stringify(f2));
+else if (f2.paused || !(f2.t > (f1 ? f1.t : 0))) bad('배경음 파일이 멈춰 있음: ' + JSON.stringify(f2));
+if (f2 && !f2.graph) bad('웹에서 배경음 파일이 음량 길(WebAudio)로 이어지지 않음');
 
 await page.locator('.music-toggle').click();
 await page.waitForTimeout(300);
@@ -114,6 +137,8 @@ for (const [ch, want] of [['ch0', 'market'], ['ch3', 'child'], ['ch7', 'final']]
   s = await now();
   console.log(ch + ':', JSON.stringify(s));
   if (s.playing !== want) bad(`${ch}에서 ${want} 곡이 나오지 않음: ${s.playing}`);
+  const fl = await page.evaluate(() => G.audio.nowFile());
+  if (!fl || !fl.src.endsWith(want + '.mp3')) bad(`${ch}에서 ${want} 파일이 나오지 않음: ${JSON.stringify(fl)}`);
 }
 // 단계의 곡: 4장 집이 불타는 대목(c4-3)까지 넘겨 본다
 await page.evaluate(() => { const st = G.save.state; for (const id of ['c4-1', 'c4-2', 'b:b4-1', 'b:b4-2']) st.done[id] = true; G.save.write(); G.app.play('ch4'); });
@@ -123,6 +148,16 @@ await page.waitForTimeout(600);
 s = await now();
 console.log('ch4 c4-3:', JSON.stringify(s));
 if (s.playing !== 'ruin') bad('가문 몰락 장면에서 몰락 곡이 나오지 않음: ' + s.playing);
+
+// 파일을 못 읽으면 합성음으로 바뀌는지
+expect404 = true;
+await page.evaluate(() => { BGM.tracks.boudoir = { src: 'assets/bgm/없는파일.mp3' }; G.audio.play('boudoir'); });
+await page.waitForTimeout(1500);
+expect404 = false;
+s = await now();
+const fb = await page.evaluate(() => G.audio.nowFile());
+console.log('없는 파일:', JSON.stringify(s), JSON.stringify(fb));
+if (s.playing !== 'boudoir' || fb) bad('없는 배경음 파일에서 합성음으로 바뀌지 않음: ' + JSON.stringify({ s, fb }));
 
 // 결과 화면
 await page.evaluate(() => { G.app.result(); }); // Promise를 돌려주면 학생 입력을 끝까지 기다리므로 버린다
@@ -136,6 +171,9 @@ sfxErr.forEach(bad);
 await page.evaluate(() => { G.save.state.music = false; G.audio.music(false); });
 await page.waitForTimeout(300);
 if ((await now()).playing !== null) bad('설정에서 배경음을 꺼도 곡이 계속됨');
+await page.waitForTimeout(1800);
+const left = await page.evaluate(() => [...document.querySelectorAll('audio')].length + ':' + (G.audio.nowFile() ? 'on' : 'off'));
+if (!left.endsWith('off')) bad('배경음을 꺼도 파일이 계속됨: ' + left);
 
 warns.forEach((w) => bad(w));
 await browser.close();

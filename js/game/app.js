@@ -77,6 +77,7 @@
       app.fixedPath ? h('div.credit.fixed', app.fixedPath === 'f' ? '선생님이 정한 길: 딸의 길' : '선생님이 정한 길: 아들의 길') : null,
       h('div.credit', '영웅소설의 관습을 모아 새로 지은 이야기예요 · 실제 작품은 붉은 낙관으로 표시해요'),
       h('div.credit.maker', '만든이 박준일(온양여자고등학교 국어 교사)'),
+      window.BGM ? h('div.credit.bgm', BGM.credit) : null,
       musicToggle()));
   };
 

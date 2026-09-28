@@ -28,7 +28,8 @@ const page = await ctx.newPage();
 const errors = [];
 page.on('console', (m) => { if (m.type() === 'error') errors.push('console: ' + m.text()); });
 page.on('pageerror', (e) => errors.push('pageerror: ' + e.message));
-page.on('requestfailed', (r) => errors.push('requestfailed: ' + r.url()));
+// 곡을 바꾸면 받던 배경음 파일을 끊는다(ERR_ABORTED) — 이건 오류가 아니다
+page.on('requestfailed', (r) => { if (/\/assets\/bgm\//.test(r.url()) && /ABORTED/.test((r.failure() || {}).errorText || '')) return; errors.push('requestfailed: ' + r.url() + ' ' + ((r.failure() || {}).errorText || '')); });
 page.on('response', (r) => { if (r.status() >= 400) errors.push('http ' + r.status() + ': ' + r.url()); });
 
 let n = 0;

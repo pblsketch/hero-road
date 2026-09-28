@@ -82,7 +82,8 @@ b { font-weight: 700; }
 .title-screen .sub { font-family: var(--serif); font-size: clamp(14px, 3.8vw, 19px); margin-top: .5em; font-weight: 700; color: var(--ink-2); text-shadow: 0 0 10px rgba(247,239,220,.95); }
 .title-screen .menu { position: relative; display: flex; flex-direction: column; gap: 10px; width: min(360px, 100%); }
 .title-screen .credit { position: relative; margin-top: 14px; font-size: .78em; color: var(--ink-2); }
-.title-screen .credit.maker { margin-top: 4px; }
+.title-screen .credit.maker, .title-screen .credit.bgm { margin-top: 4px; }
+.title-screen .credit.bgm { font-size: .7em; opacity: .85; }
 .title-screen .credit.fixed { color: var(--fiction); font-weight: 800; }
 .title-screen .music-toggle { position: absolute; top: max(12px, env(safe-area-inset-top)); right: 12px; background: rgba(250,244,230,.85); z-index: 2; }
 .title-screen .music-toggle.off { color: var(--ink-2); }

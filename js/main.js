@@ -23,7 +23,8 @@
     if (q.get('result') === '1' && st.path) return G.app.result();
     G.app.title();
   };
-  document.addEventListener('pointerdown', () => G.audio.unlock(), { once: true });
-  document.addEventListener('keydown', () => G.audio.unlock(), { once: true });
+  // 손댈 때마다 소리를 풀어 준다(막혔던 배경음 파일도 이때 다시 튼다)
+  document.addEventListener('pointerdown', () => G.audio.unlock(), { passive: true });
+  document.addEventListener('keydown', () => G.audio.unlock());
   go();
 })();

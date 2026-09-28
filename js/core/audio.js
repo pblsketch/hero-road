@@ -1,5 +1,7 @@
 'use strict';
-// 소리: 모두 브라우저에서 합성한다(소리 파일 없음). 같은 만든이의 「관동별곡: 잃어버린 시구」 합성 엔진을 가져와 곡을 새로 지었다.
+// 소리: 배경음은 국립국악원 디지털 이음의 실제 연주 악구를 이어 붙인 파일(js/data/bgm.js)을 먼저 틀고,
+//  파일이 없거나 읽지 못하면 브라우저 합성음으로 튼다. 효과음은 모두 합성한다.
+// 합성: 같은 만든이의 「관동별곡: 잃어버린 시구」 합성 엔진을 가져와 곡을 새로 지었다.
 //  - 가야금: 줄을 튕기는 소리를 흉내 내는 Karplus-Strong 합성 + 농현(떨기)·밀어 올리기·꺾어 내리기
 //  - 대금: 사인파 + 숨소리 + 늦게 들어오는 떨림, 음 사이를 미끄러지듯 잇기
 //  - 해금: 톱니파를 걸러 낸 비음 섞인 활 소리
@@ -48,6 +50,7 @@
     document.addEventListener('visibilitychange', () => {
       if (!ctx) return;
       if (document.hidden) ctx.suspend(); else ctx.resume();
+      if (cur && cur.d) { if (document.hidden) cur.d.el.pause(); else cur.d.el.play().catch(() => {}); }
     });
     A.ctx = ctx;
     return ctx;
@@ -425,8 +428,83 @@
   const built = {};
   const trackOf = (name) => built[name] || (built[name] = buildTrack(TRACKS[name]));
   let sched = null, cur = null;
+  // 파일 배경음: audio 요소 두 개를 번갈아 쓴다(곡을 바꿀 때 겹쳐 흐르고, iOS에서도 한 번 손댄 요소는 계속 틀 수 있게).
+  //  웹(http/https)에서는 WebAudio 길(musicBus)로 이어 음량·끄기가 합성음과 같게, file://에서는 요소 음량으로 조절한다.
+  const viaGraph = /^https?:$/.test(location.protocol);
+  const SILENT = 'data:audio/wav;base64,UklGRrQBAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YZABAACAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICA';
+  const decks = [], failed = {};
+  function makeDecks() {
+    if (decks.length) return;
+    for (let i = 0; i < 2; i++) {
+      const el = new Audio();
+      el.loop = true; el.preload = 'auto';
+      const d = { el, busy: false, primed: false, bus: null };
+      if (viaGraph) {
+        el.crossOrigin = 'anonymous';
+        try { d.bus = ctx.createGain(); d.bus.gain.value = 0.0001; ctx.createMediaElementSource(el).connect(d.bus); d.bus.connect(musicBus); } catch (e) { d.bus = null; }
+      }
+      if (!d.bus) el.volume = 0;
+      decks.push(d);
+    }
+  }
+  // 첫 손댐 때 빈 소리를 한 번 틀어 두 요소 모두 '사용자가 허락한' 상태로 만든다
+  function prime() {
+    makeDecks();
+    for (const d of decks) {
+      if (d.primed || d.busy) continue;
+      d.primed = true;
+      d.el.src = SILENT;
+      const pr = d.el.play();
+      if (pr && pr.then) pr.then(() => { if (!d.busy) d.el.pause(); }, () => { d.primed = false; });
+    }
+  }
+  // 음량을 to(곡 음량 배율)로 secs초 동안 옮긴다
+  function fade(d, to, secs, done) {
+    clearInterval(d.fade); clearTimeout(d.off); d.fade = d.off = null;
+    if (d.bus) {
+      const g = d.bus.gain, now = ctx.currentTime;
+      g.cancelScheduledValues(now);
+      g.setValueAtTime(Math.max(0.0001, g.value), now);
+      g.exponentialRampToValueAtTime(Math.max(0.0001, to), now + Math.max(0.02, secs));
+      if (done) d.off = setTimeout(done, secs * 1000 + 100);
+      return;
+    }
+    const from = d.el.volume, goal = Math.min(1, MUSIC_VOL * to), t0 = Date.now();
+    const tick = () => {
+      const k = secs > 0 ? Math.min(1, (Date.now() - t0) / (secs * 1000)) : 1;
+      try { d.el.volume = from + (goal - from) * k; } catch (e) { /* 음량을 못 바꾸는 기기 */ }
+      if (k >= 1) { clearInterval(d.fade); d.fade = null; if (done) done(); }
+    };
+    d.fade = setInterval(tick, 50);
+    tick();
+  }
+  function startFile(name) {
+    makeDecks();
+    const t = window.BGM.tracks[name];
+    const d = decks.find((x) => !x.busy) || decks[0];
+    const me = { name, file: true, d };
+    cur = me;
+    d.busy = true;
+    fade(d, 0, 0);
+    d.el.onerror = () => fallback();
+    d.el.src = t.src;
+    fade(d, t.gain || 1, 1.2);
+    function fallback() { if (cur !== me) return; failed[name] = true; stopTrack(true); startTrack(name); } // 파일을 못 읽으면 합성음으로
+    const pr = d.el.play();
+    if (pr && pr.catch) pr.catch((e) => { if (e && (e.name === 'NotAllowedError' || e.name === 'AbortError')) return; fallback(); }); // 허락 전이면 다음 손댐 때 다시
+  }
+  function releaseFile(c, fast) {
+    const d = c.d;
+    d.el.onerror = null;
+    fade(d, 0, fast ? 0.8 : 1.5, () => {
+      if (cur && cur.d === d) return; // 그새 다시 쓰이면 그대로
+      try { d.el.pause(); d.el.removeAttribute('src'); d.el.load(); } catch (e) { /* 무시 */ }
+      d.busy = false;
+    });
+  }
   function startTrack(name) {
     stopTrack(true);
+    if (window.BGM && window.BGM.tracks[name] && !failed[name] && !A.synthOnly) return startFile(name);
     if (!TRACKS[name]) return;
     const tr = trackOf(name);
     const bus = ctx.createGain(); bus.gain.value = 0.0001; bus.connect(musicBus);
@@ -450,6 +528,7 @@
   }
   function stopTrack(fast) {
     if (sched) { clearInterval(sched); sched = null; }
+    if (cur && cur.file) { releaseFile(cur, fast); cur = null; return; }
     if (cur && ctx) {
       const b = cur.bus, now = ctx.currentTime;
       b.gain.cancelScheduledValues(now);
@@ -462,7 +541,7 @@
   // 지금 들려야 할 곡을 맞춘다(배경음을 끄면 예약도 멈춘다)
   function sync() {
     if (!ctx) return;
-    const want = S().music && A.track && TRACKS[A.track] ? A.track : null;
+    const want = S().music && A.track && (TRACKS[A.track] || (window.BGM && window.BGM.tracks[A.track])) ? A.track : null;
     if (!want) { if (cur) stopTrack(false); return; }
     if (!cur || cur.name !== want) startTrack(want);
   }
@@ -470,6 +549,8 @@
   A.unlock = function () {
     if (!init()) return;
     if (ctx.state === 'suspended' && !document.hidden) ctx.resume();
+    if (window.BGM && !A.synthOnly) prime();
+    if (cur && cur.d && cur.d.el.paused && !document.hidden) cur.d.el.play().catch(() => {});
     sync();
   };
   // 장면의 곡 정하기(같은 곡이면 그대로 이어서)
@@ -487,6 +568,9 @@
     if (want && ctx.state === 'suspended') ctx.resume();
     sync();
   };
+  // 점검용: 지금 파일 배경음을 틀면 그 상태, 합성음이거나 멈췄으면 null
+  A.nowFile = () => (cur && cur.d ? { name: cur.name, src: cur.d.el.currentSrc, paused: cur.d.el.paused, t: cur.d.el.currentTime, graph: !!cur.d.bus } : null);
+  A.synthOnly = false; // 점검용: true면 파일 없이 합성음만
 
   // ───────── 효과음(가야금·장구·종이 소리)
   const sfxOn = () => S().sound && init() && ctx.state !== 'closed';

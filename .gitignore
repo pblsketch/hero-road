@@ -6,3 +6,8 @@ __pycache__/
 *.log
 # 생성용 원본 이미지(용량이 커서 저장소에는 올리지 않음 — 게임은 assets/pt, sc, ui, sprites의 가공본을 씀)
 assets/raw/
+# 내려받은 국악 원음(wav·zip, 용량이 커서 올리지 않음 — 게임은 assets/bgm의 mp3를 씀. 다시 만들기: tools/make_bgm.py)
+assets/raw_audio/
+# 도구가 만든 작업 폴더
+.omc/
+tests/.omc/

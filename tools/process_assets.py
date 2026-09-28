@@ -7,7 +7,7 @@
 - sc_*   → assets/sc/<이름>.webp  (가로 1280px, 장면)
 - title_art → assets/ui/title_art.webp (세로 그림, 없으면 장면 sc_market으로 대신)
 - 종이 질감(assets/ui/paper.webp)은 그림 생성 대신 여기서 직접 만든다.
-- 아이콘(icon-192/512.png)과 공유용 그림(og-image.jpg)도 만든다.
+- 아이콘(icon-192/512.png)도 만든다. 공유용 썸네일은 tools/make_og.py.
 """
 import os, glob, random
 import numpy as np
@@ -110,21 +110,8 @@ def icons(title_im):
         f = serif_font(int(s * 0.5), 700)
         d.text((s / 2, s / 2), '雄', font=f, fill=(255, 245, 235), anchor='mm')
         im.save(os.path.join(OUT['ui'], f'icon-{s}.png'))
-    # 공유용 그림
-    W, H = 1200, 630
-    t = title_im.copy()
-    r = max(W / t.width, H / t.height)
-    t = t.resize((round(t.width * r), round(t.height * r)), Image.LANCZOS)
-    t = t.crop(((t.width - W) // 2, (t.height - H) // 2, (t.width - W) // 2 + W, (t.height - H) // 2 + H))
-    ov = Image.new('RGBA', (W, H), (0, 0, 0, 0))
-    d = ImageDraw.Draw(ov)
-    d.rectangle([0, H - 170, W, H], fill=(239, 226, 195, 225))
-    brush = os.path.join(ROOT, 'tools', 'fonts_src', 'NanumBrushScript-Regular.ttf')
-    fb = ImageFont.truetype(brush, 96) if os.path.exists(brush) else serif_font(72)
-    d.text((60, H - 88), '영웅의 길', font=fb, fill=(42, 33, 25), anchor='lm')
-    d.text((470, H - 82), '영웅소설 서사 RPG', font=serif_font(46), fill=(179, 52, 42), anchor='lm')
-    Image.alpha_composite(t.convert('RGBA'), ov).convert('RGB').save(os.path.join(OUT['ui'], 'og-image.jpg'), quality=85)
-    print('ui icons, og-image')
+    # 공유용 썸네일은 tools/make_og.py가 만든다(도트 게임 화면을 함께 넣음)
+    print('ui icons')
 
 
 if __name__ == '__main__':
